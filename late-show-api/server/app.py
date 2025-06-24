@@ -8,12 +8,12 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
     
-    
+    # Initialize extensions
     db.init_app(app)
     migrate = Migrate(app, db)
     jwt = JWTExtended(app)
     
-  
+    # Register blueprints
     from controllers.auth_controller import auth_bp
     from controllers.episode_controller import episode_bp
     from controllers.guest_controller import guest_bp
